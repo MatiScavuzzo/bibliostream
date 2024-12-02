@@ -1,0 +1,33 @@
+import type { WithMediaType } from './commons';
+import type { MovieWithMediaType } from './movie';
+import type { TvShowWithMediaType } from './tv';
+
+export interface Person {
+  id: number;
+  name: string;
+  known_for: MovieWithMediaType[] | TvShowWithMediaType[];
+  profile_path: string;
+  adult: boolean;
+  known_for_department: string;
+  gender: number;
+  popularity: number;
+}
+
+export type PersonWithMediaType = WithMediaType<Person, 'person'>;
+
+export interface PersonDetails {
+  adult: boolean;
+  also_known_as: string[];
+  birthday: string;
+  biography: string;
+  deathday?: string;
+  gender: number;
+  homepage?: string;
+  id: number;
+  imdb_id: string;
+  known_for_department: string;
+  name: string;
+  place_of_birth: string;
+  popularity: number;
+  profile_path: string;
+}

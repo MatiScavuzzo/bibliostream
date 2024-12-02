@@ -1,7 +1,6 @@
-import type { Movie } from "@types";
+import { IMAGE_URL } from "@/utilities/imageUrl";
+import type { Movie } from "@models";
 import Image from "next/image";
-
-const IMAGE_URL = 'https://image.tmdb.org/t/p/';
 
 interface Props {
   movie: Movie;
@@ -20,7 +19,7 @@ export const MovieCard = ({ movie, withDetails }: Props) => {
             width={300}
             height={300} />
           <div
-            className='absolute flex items-center w-3/4 p-2 font-extrabold text-white rounded-lg bottom-2 sm:bottom-4 bg-white/5 backdrop-blur-sm left-2'>
+            className='absolute flex items-center w-3/4 p-2 font-extrabold text-white rounded-lg bottom-2 sm:bottom-4 bg-white/5 backdrop-blur-xs left-2'>
             <p
               className={`text-start text-sm`}>{movie.title.toUpperCase()}
             </p>

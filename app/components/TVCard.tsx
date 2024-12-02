@@ -20,7 +20,7 @@ export const TVCard = ({ series, withDetails }: Props) => {
               <p className='text-center'>Sorry! No image available</p>
             </div>
           )}
-          <div className='absolute flex items-center w-3/4 p-2 font-extrabold text-white rounded-lg bottom-2 sm:bottom-4 bg-white/5 backdrop-blur-sm left-2'>
+          <div className='absolute flex items-center w-3/4 p-2 font-extrabold text-white rounded-lg bottom-2 sm:bottom-4 bg-white/5 backdrop-blur-xs left-2'>
             <p className={`text-start text-sm`}>{series.name.toUpperCase()}</p>
           </div>
         </div>

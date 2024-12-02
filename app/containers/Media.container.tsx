@@ -1,6 +1,6 @@
 'use client'
-import type { Page } from "@/types";
-import { useEffect, useState } from "react";
+import type { Page } from "@models";
+import { useState } from "react";
 
 interface ContainerProps<T> {
   title: string;
