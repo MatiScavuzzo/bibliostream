@@ -5,6 +5,7 @@ import type {
   SpokenLanguage,
   WithMediaType,
 } from './commons';
+import type { Video } from './videos';
 
 export type BelongsToCollection = {
   id: number;
@@ -16,7 +17,7 @@ export type BelongsToCollection = {
 export type MovieDetails = {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: string;
+  belongs_to_collection: BelongsToCollection;
   budget: number;
   genres: Genre[];
   homepage: string;
@@ -57,5 +58,16 @@ export type Movie = {
   video: boolean;
   vote_average: number;
 };
+
+export interface MovieWithAppends extends MovieDetails {
+  images?: {
+    backdrops: string[];
+    posters: string[];
+    logos: string[];
+  };
+  videos?: {
+    results: Video[];
+  };
+}
 
 export type MovieWithMediaType = WithMediaType<Movie, 'movie'>;

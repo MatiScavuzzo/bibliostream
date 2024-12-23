@@ -35,3 +35,16 @@ body {
   background-color: #00050d;
   color: white;
 }
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-fade {
+  animation: fade 0.5s ease-in-out forwards;
+}

@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from "react";
-import { SWRConfig } from "swr";
+import { SWRConfig, useSWRConfig } from "swr";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
