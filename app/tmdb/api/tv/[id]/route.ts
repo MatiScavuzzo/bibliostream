@@ -10,12 +10,14 @@ const options = {
   headers: headersRequest,
 };
 
-export async function GET(req: NextRequest) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: number } }
+) {
   try {
-    const searchParams = req.nextUrl.searchParams;
-    const page = searchParams.get('page') ? searchParams.get('page') : '1';
+    const id = params.id.toString();
     const res = await fetch(
-      `${API_URL}/tv/popular?language=en-US&page=${page}&append_to_response=backdrop_path,poster_path`,
+      `${API_URL}/tv/${id}?language=en-US&append_to_response=images`,
       options
     );
     if (!res.ok) {

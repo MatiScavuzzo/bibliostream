@@ -16,15 +16,11 @@ export async function GET(
 ) {
   try {
     const id = params.id.toString();
-    const res = await fetch(
-      `${API_URL}/movie/${id}?language=en-US&append_to_response=images`,
-      options
-    );
+    const res = await fetch(`${API_URL}/movie/${id}/watch/providers`, options);
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     }
     const data = await res.json();
-    console.log(data);
     return Response.json(data);
   } catch (err) {
     console.error(err);

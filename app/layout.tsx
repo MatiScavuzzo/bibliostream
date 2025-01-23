@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import type { Children } from "@types";
 import "./globals.css";
 import { SWRProvider } from './context/SWRProvider';
+import { Navbar } from './containers';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -16,6 +17,9 @@ export default function RootLayout(
     <html lang="es" className={inter.className}>
       <SWRProvider>
         <body>
+          <header className='flex w-full justift-center'>
+            <Navbar />
+          </header>
           {children}
         </body>
       </SWRProvider>

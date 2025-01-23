@@ -10,14 +10,13 @@ const options = {
   headers: headersRequest,
 };
 
-export async function GET(req: NextRequest) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: number } }
+) {
   try {
-    const searchParams = req.nextUrl.searchParams;
-    const page = searchParams.get('page') ? searchParams.get('page') : '1';
-    const res = await fetch(
-      `${API_URL}/tv/popular?language=en-US&page=${page}&append_to_response=backdrop_path,poster_path`,
-      options
-    );
+    const id = params.id.toString();
+    const res = await fetch(`${API_URL}/tv/${id}/watch/providers`, options);
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     }

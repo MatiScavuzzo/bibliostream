@@ -3,6 +3,8 @@
 @theme {
   --color-prime-background: oklch(11.07% 0.027 244.12);
   --color-prime-navbar: rgba(25, 30, 37);
+  --color-prime-check: #1a98ff;
+  --color-prime-top: #36eea1;
 }
 
 /*
@@ -47,4 +49,14 @@ body {
 
 .animate-fade {
   animation: fade 0.5s ease-in-out forwards;
+}
+
+.bg-fusion {
+  mask-image: radial-gradient(
+    circle at 90% 40%,
+    var(--color-prime-background) 82%,
+    transparent 92%
+  );
+  mask-composite: add;
+  -webkit-mask-composite: add;
 }
