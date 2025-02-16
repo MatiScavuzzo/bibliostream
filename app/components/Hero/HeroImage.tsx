@@ -36,7 +36,6 @@ export const HeroImage = ({ isLoading, error, data, next, isPrime }: HeroProps) 
 
   useEffect(() => {
     setOverview(false)
-    console.log(data?.id)
   }, [data])
 
 
@@ -80,7 +79,7 @@ export const HeroImage = ({ isLoading, error, data, next, isPrime }: HeroProps) 
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className='absolute bottom-24 w-full h-auto overflow-hidden'>
+                <div className='absolute bottom-36 w-full h-auto overflow-hidden'>
                   <Link href={`/${isMovie ? 'movie' : 'tv'}/${data.id}`}>
                     <h1 className={`text-[65px] leading-16 text-start pt-2 font-black w-fit transition-transform ${next ? 'duration-0' : 'duration-500 ease-out'} ${overview
                       ? 'opacity-100 -translate-y-2'
@@ -92,7 +91,7 @@ export const HeroImage = ({ isLoading, error, data, next, isPrime }: HeroProps) 
                     : 'opacity-100 translate-y-18'
                     }`}>{data.tagline}</h3>
                   <article className={`transition ${next ? 'duration-0' : 'duration-500 ease-out'} text-start text-lg overflow-hidden ${overview
-                    ? 'opacity-100 line-clamp-2 -translate-y-2'
+                    ? 'opacity-100 line-clamp-2 -translate-y-0'
                     : 'opacity-0 line-clamp-2 translate-y-10'}`}>
                     {isMovie
                       ? data.overview
@@ -102,14 +101,18 @@ export const HeroImage = ({ isLoading, error, data, next, isPrime }: HeroProps) 
                     }
                   </article>
                 </div>
-                <div className='absolute z-20 bottom-8 w-full h-14 bg-amber-50/20'></div>
+                <Link
+                  href={`/${isMovie ? 'movie' : 'tv'}/${data.id}`}
+                  className='absolute flex items-center justify-center mb-0.5 font-semibold px-6 text-2xl rounded-lg z-20 bottom-10 w-auto text-white h-18 bg-amber-50/20'>
+                  Ver detalles
+                </Link>
                 <div className='w-full absolute bottom-0'>
                   {
                     isLoading
                       ? <p className="text-start animate-pulse flex gap-2 items-center justify-start text-md"><span className='w-4.5 h-4.5 rounded-full bg-white/20 flex items-center justify-center text-black text-xs'></span><span className="w-1/3 h-4 rounded-sm bg-white/20"></span></p>
                       : isPrime
-                        ? <p className="text-start flex gap-2 items-center justify-start text-md"><span className='w-4.5 h-4.5 rounded-full bg-prime-check flex items-center justify-center text-black text-xs'><FaCheck /></span>Se incluye con Prime</p>
-                        : <p className="text-start flex gap-2 items-center justify-start text-md"><span className='w-4.5 h-4.5 rounded-full bg-red-600 flex items-center justify-center text-white text-xs'><FaX /></span>No se incluye con Prime</p>
+                        ? <p className="text-start flex gap-2 items-center justify-start text-lg"><span className='w-4.5 h-4.5 rounded-full bg-prime-check flex items-center justify-center text-black text-xs'><FaCheck /></span>Se incluye con Prime</p>
+                        : <p className="text-start flex gap-2 items-center justify-start text-lg"><span className='w-4.5 h-4.5 rounded-full bg-red-600 flex items-center justify-center text-white text-xs'><FaX /></span>No se incluye con Prime</p>
                   }
                 </div>
               </section>

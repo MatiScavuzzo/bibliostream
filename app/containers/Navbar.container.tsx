@@ -1,38 +1,24 @@
 'use client'
+import { useScroll } from "@/hooks"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const isScrolled = useScroll();
   const paths = [
-    { name: 'Inicio', path: '/' },
-    { name: 'Películas', path: '/movie' },
-    { name: 'Series', path: '/tv' },
+    { name: 'Home', path: '/' },
+    { name: 'Movies', path: '/movie' },
+    { name: 'TV Shows', path: '/tv' },
   ]
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
 
   return (
     <>
       <nav
-        className={`fixed z-50 flex items-center justify-start w-full h-16 mx-0 sm:w-[calc(100%-3rem)] sm:mx-6 gap-8 px-2 rounded-b-lg ${isScrolled
+        className={`fixed z-50 flex items-center justify-start w-full h-18 mx-0 sm:w-[calc(100%-3rem)] sm:mx-6 gap-8 px-2 rounded-b-lg ${isScrolled
           ? 'bg-linear-90 from-prime-navbar/80 via-prime-navbar/65 to-prime-navbar/80 backdrop-blur-xl'
           : ''}`}>
-        <h1 className='p-2 text-md font-bold'>biblio stream</h1>
+        <h1 className='p-2 text-xl font-bold'>biblio stream</h1>
         <ul className='flex h-full list-none items-center justify-around gap-3'>
           {paths.map((path, index) => (
             <li key={index} className="h-full flex items-center justify-center cursor-pointer">
@@ -42,12 +28,12 @@ export const Navbar = () => {
                   : ''}`}
                 href={path.path}>
                 <div
-                  className={`hover:bg-white text-white py-2 px-3 group-hover:text-black text-sm font-medium flex items-center justify-center ${pathname === path.path
+                  className={`hover:bg-white text-white pt-3.5 pb-2.5 px-4 group-hover:text-black text-sm font-medium flex items-center justify-center ${pathname === path.path
                     ? 'relative overflow-hidden bg-white/20 backdrop-blur-lg'
                     : ''}`}
                 >
                   <div className={pathname === path.path ? 'absolute -top-3.5 left-0 bg-radial-[at_50%_40%] w-full from-white to-transparent h-7 blur-xs rounded-full' : ''}></div>
-                  <span>{path.name}</span>
+                  <span className="text-base font-bold tracking-wider">{path.name}</span>
                 </div>
               </Link>
             </li>
